@@ -1,11 +1,30 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"sort"
+	"strconv"
+	"strings"
+)
 
 func main() {
 
-	f := ReadFile("input.txt")
+	file, _ := os.ReadFile("input.txt")
 
-	fmt.Println(string(f))
+	split := strings.Split(strings.TrimSpace(string(file)), "\n\n")
 
+	calories := make([]int, len(split))
+
+	for i, j := range split {
+		for _, j := range strings.Fields(j) {
+			c, _ := strconv.Atoi(j)
+			calories[i] += c
+		}
+	}
+
+	sort.Sort(sort.Reverse(sort.IntSlice(calories)))
+
+	fmt.Println("The Elf carrying the most Calories:", calories[0])
+	fmt.Println("Sum of the top three Elves carrying the most Calories:", calories[0]+calories[1]+calories[2])
 }
