@@ -25,6 +25,9 @@ func main() {
 
 	sort.Sort(sort.Reverse(sort.IntSlice(calories)))
 
+	// Part 1
 	fmt.Println("The Elf carrying the most Calories:", calories[0])
+
+	// Part 2
 	fmt.Println("Sum of the top three Elves carrying the most Calories:", calories[0]+calories[1]+calories[2])
 }
